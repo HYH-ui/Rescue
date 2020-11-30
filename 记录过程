@@ -1,0 +1,5 @@
+main.py文件主入口
+resource是素材
+source是游戏相关代码
+
+source里的component是游戏部件，surface是进入游戏和加载
