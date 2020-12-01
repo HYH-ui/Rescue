@@ -9,4 +9,4 @@ pygame.display.set_mode(C.SCREEN_SIZE)
 
 
 # 传入图片路径参数
-GRAPHICS = tools.load_graphics('resources/')
+GRAPHICS = tools.load_graphics('resource/')

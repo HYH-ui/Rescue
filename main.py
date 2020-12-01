@@ -1,4 +1,6 @@
 #游戏主要入口
+print('123')
+
 import pygame
 
 from source import tools,setup
