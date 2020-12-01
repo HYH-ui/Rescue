@@ -1,1 +1,6 @@
-#常量:屏幕宽高，人物的动作
+# 常量:屏幕宽高，人物的动作
+
+
+SCREEN_W, SCREEN_H = 1200,720
+SCREEN_SIZE = (SCREEN_W , SCREEN_H)
+

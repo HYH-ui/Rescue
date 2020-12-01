@@ -1,10 +1,11 @@
 #游戏主要入口
+import pygame
 
-import source import tools
+from source import tools,setup
 
 def main():
     game = tools.Game()
-    game.run()
+    game.run(setup.GRAPHICS)
 
 
 if __name__ == '__main__':
