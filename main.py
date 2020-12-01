@@ -6,6 +6,7 @@ import pygame
 from source import tools,setup
 
 def main():
+    print('test冲突')
     game = tools.Game()
     game.run(setup.GRAPHICS)
 
