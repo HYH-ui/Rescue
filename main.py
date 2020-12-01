@@ -1,12 +1,11 @@
-#游戏主要入口
-print('123')
+# 游戏主要入口
 
 import pygame
 
-from source import tools,setup
+from source import tools, setup
+
 
 def main():
-    print('test冲突')
     game = tools.Game()
     game.run(setup.GRAPHICS)
 
