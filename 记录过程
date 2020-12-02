@@ -4,3 +4,6 @@ source是游戏相关代码
 tools是游戏主控和一些工具
 
 source里的component是游戏部件，states是进入游戏和加载
+
+menu.py加入死亡后的结束动画
+

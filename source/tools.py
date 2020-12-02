@@ -25,6 +25,7 @@ class Game:
                     self.keys = pygame.key.get_pressed()
                     print('抬起按键')
             image = get_image(GRAPHICS['maps'], 0, 0, 2314, 1280, (0, 0, 0), 0.5625)
+
             self.screen.blit(image, (0,0))
             pygame.display.update()
             self.clock.tick(60)
@@ -46,6 +47,8 @@ def load_graphics(path, accept=('.jpg', '.png', '.bmp', '.gif')):
             graphics[name] = img
     return graphics
 # sheet传入一张图片，(x,y)传入左上角坐标，(width,height)方框的宽高，colorkey图片底色，scale放大倍数
+
+#  绘画，更新
 
 
 def get_image(sheet, x, y, width, height, colorkey, scale):
