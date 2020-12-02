@@ -2,7 +2,6 @@
 
 
 import pygame
-import random
 import os
 
 
@@ -11,18 +10,22 @@ class Game:
         self.screen = pygame.display.get_surface()
         self.clock = pygame.time.Clock()
 
-    def run(self,GRAPHICS):
+    def run(self, GRAPHICS):
         done = False
-        while not done:
+        while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.display.quit()
-                    done = True
+                # 按下按键时触发
                 elif event.type == pygame.KEYDOWN:
                     self.keys = pygame.key.get_pressed()
+                    print('按下下键')
+                # 抬起按键时触发
                 elif event.type == pygame.KEYUP:
                     self.keys = pygame.key.get_pressed()
-            self.screen.fill((random.randint(0,255),random.randint(0,255),random.randint(0,255)))
+                    print('抬起按键')
+            image = get_image(GRAPHICS['maps'], 0, 0, 2314, 1280, (0, 0, 0), 0.5625)
+            self.screen.blit(image, (0,0))
             pygame.display.update()
             self.clock.tick(60)
 
@@ -30,23 +33,24 @@ class Game:
 # 读取图片并返回
 
 
-def load_graphics(path, accept=('jpg', '.png', '.bmp', '.gif')):
+def load_graphics(path, accept=('.jpg', '.png', '.bmp', '.gif')):
     graphics = {}
     for pic in os.listdir(path):
-        name , ext = os.path.splitext(pic)
+        name, ext = os.path.splitext(pic)
         if ext.lower() in accept:
-            img = pygame.image.load(os.path.join(path,pic))
+            img = pygame.image.load(os.path.join(path, pic))
             if img.get_alpha():
                 img = img.convert_alpha()
             else:
                 img = img.convert()
             graphics[name] = img
+    return graphics
 # sheet传入一张图片，(x,y)传入左上角坐标，(width,height)方框的宽高，colorkey图片底色，scale放大倍数
 
 
 def get_image(sheet, x, y, width, height, colorkey, scale):
-    image = pygame.Surface((width,height))
-    image.blit(sheet,(0,0),(x,y,width,height))
+    image = pygame.Surface((width, height))
+    image.blit(sheet, (0, 0), (x, y, width, height))
     image.set_colorkey(colorkey)
-    image = pygame.transform.scale(image, (int(width*scale)) , (int(height*scale)))
+    image = pygame.transform.scale(image, (int(width*scale), int(height*scale)))
     return image
