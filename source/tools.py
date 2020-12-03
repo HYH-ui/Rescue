@@ -3,7 +3,7 @@
 
 import pygame
 import os
-
+from . import constants as C
 
 class Game:
     def __init__(self):
@@ -24,9 +24,11 @@ class Game:
                 elif event.type == pygame.KEYUP:
                     self.keys = pygame.key.get_pressed()
                     print('抬起按键')
-            image = get_image(GRAPHICS['maps'], 0, 0, 2314, 1280, (0, 0, 0), 0.5625)
+            image1 = get_image(GRAPHICS['maps'], 0, 0, 2314, 1280, (0, 0, 0), 0.5625)
+            image2 = get_image(GRAPHICS['mario_bros'], 80, 0, 16, 32, (0, 0, 0), C.PLAYER_MULTI)
 
-            self.screen.blit(image, (0,0))
+            self.screen.blit(image1, (0,0))
+            self.screen.blit(image2, (10,520))
             pygame.display.update()
             self.clock.tick(60)
 
