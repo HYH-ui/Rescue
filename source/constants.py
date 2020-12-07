@@ -1,8 +1,12 @@
 # 常量:屏幕宽高，人物的动作
-
-
 SCREEN_W, SCREEN_H = 1200, 720
 SCREEN_SIZE = (SCREEN_W, SCREEN_H)
 
 PLAYER_BLOOD = 100
-PLAYER_MULTI = 5
+PLAYER_MULTI = 2
+
+# 敌人的尝量
+Enemy_BLOOD = 100
+Enemy_MULTI = 3.5
+
+BG_MULTI = 0.5625

@@ -6,16 +6,27 @@ import os
 from . import constants as C
 
 class Game:
-    def __init__(self):
+    def __init__(self, state_dict, start_state):
         self.screen = pygame.display.get_surface()
         self.clock = pygame.time.Clock()
+        self.keys = pygame.key.get_pressed()
+        self.state_dict = state_dict
+        self.start = self.state_dict[start_state]
 
-    def run(self, GRAPHICS):
+    def update(self):
+        if self.start.finished:
+            next_state = self.start.next
+            self.start.finished = False
+            self.start = self.state_dict[next_state]
+        self.start.update(self.screen, self.keys)
+
+    def run(self):
         done = False
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.display.quit()
+                    quit()
                 # 按下按键时触发
                 elif event.type == pygame.KEYDOWN:
                     self.keys = pygame.key.get_pressed()
@@ -24,11 +35,8 @@ class Game:
                 elif event.type == pygame.KEYUP:
                     self.keys = pygame.key.get_pressed()
                     print('抬起按键')
-            image1 = get_image(GRAPHICS['maps'], 0, 0, 2314, 1280, (0, 0, 0), 0.5625)
-            image2 = get_image(GRAPHICS['mario_bros'], 80, 0, 16, 32, (0, 0, 0), C.PLAYER_MULTI)
 
-            self.screen.blit(image1, (0,0))
-            self.screen.blit(image2, (10,520))
+            self.update()
             pygame.display.update()
             self.clock.tick(60)
 
